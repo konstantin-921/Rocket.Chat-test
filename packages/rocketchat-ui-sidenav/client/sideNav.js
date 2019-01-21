@@ -41,6 +41,10 @@ Template.sideNav.helpers({
 		const viewMode = getUserPreference(Meteor.userId(), 'sidebarViewMode');
 		return viewMode ? viewMode : 'condensed';
 	},
+	sidebarEmojiMod() {
+		const emojiIcon = getUserPreference(Meteor.userId(), 'sidebarEmojiMod');
+		return emojiIcon ? emojiIcon : 'happy';
+	},
 
 	sidebarHideAvatar() {
 		return getUserPreference(Meteor.userId(), 'sidebarHideAvatar');

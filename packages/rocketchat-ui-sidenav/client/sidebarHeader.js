@@ -4,7 +4,7 @@ import { FlowRouter } from 'meteor/kadira:flow-router';
 import { Template } from 'meteor/templating';
 import { popover } from 'meteor/rocketchat:ui-utils';
 import { t, getUserPreference, handleError } from 'meteor/rocketchat:utils';
-import { AccountBox, menu, SideNav } from 'meteor/rocketchat:ui-utils';
+import { AccountBox, menu, SideNav, modal } from 'meteor/rocketchat:ui-utils';
 import { callbacks } from 'meteor/rocketchat:callbacks';
 import { settings } from 'meteor/rocketchat:settings';
 import { hasAtLeastOnePermission } from 'meteor/rocketchat:authorization';
@@ -20,6 +20,24 @@ const viewModeIcon = {
 	medium: 'list',
 	condensed: 'list-alt',
 };
+
+const emojiIcon = {
+	happy: 'emoji-happy',
+	sad: 'emoji-sad',
+	uncertain: 'emoji-uncertain',
+	confused: 'emoji-confused',
+};
+
+const counter = {
+	happy: 0,
+	sad: 0,
+	uncertain: 0,
+	confused: 0,
+}
+
+const setCounter = (value) => {
+	counter[value] = counter[value] + 1;
+} 
 
 const extendedViewOption = (user) => {
 	if (settings.get('Store_Last_Message')) {
@@ -73,6 +91,95 @@ const toolbarButtons = (user) => [{
 	icon: 'magnifier',
 	action: () => {
 		toolbarSearch.show(false);
+	},
+},
+{
+	name: t('Emoji'),
+	icon: () => emojiIcon[getUserPreference(user, 'sidebarEmojiMod') || 'happy'],
+	action: (e) => {
+		const config = {
+			columns: [
+				{
+					groups: [
+						{
+							items: [
+								{
+									icon: 'emoji-happy',
+									name: t('Happy'),
+									action: () => {
+										Meteor.call('saveUserPreferences', { sidebarEmojiMod: 'happy' }, function(error) {
+											if (error) {
+												return handleError(error);
+											}
+										});
+										setCounter('happy');
+									},
+								},
+								{
+									icon: 'emoji-sad',
+									name: t('Sad'),
+									action: () => {
+										Meteor.call('saveUserPreferences', { sidebarEmojiMod: 'sad' }, function(error) {
+											if (error) {
+												return handleError(error);
+											}
+										});
+										setCounter('sad');
+									},
+								},
+								{
+									icon: 'emoji-uncertain',
+									name: t('Uncertain'),
+									action: () => {
+										Meteor.call('saveUserPreferences', { sidebarEmojiMod: 'uncertain' }, function(error) {
+											if (error) {
+												return handleError(error);
+											}
+										});
+										setCounter('uncertain');
+									},
+								},
+								{
+									icon: 'emoji-confused',
+									name: t('Confused'),
+									action: () => {
+										Meteor.call('saveUserPreferences', { sidebarEmojiMod: 'confused' }, function(error) {
+											if (error) {
+												return handleError(error);
+											}
+										});
+										setCounter('confused');
+									},
+								},
+							],
+						},
+						{
+							items: [
+								{
+									icon: 'customize',
+									name: t('Graphs'),
+									action: () => {
+										modal.open({
+											title: t('Emotion click graph'),
+											content: 'graphs',
+											data: {
+												messageId: 'Oops',
+											},
+											showConfirmButton: true,
+											showCancelButton: false,
+											confirmButtonText: t('Close'),
+										});
+									},
+								},
+							],
+						},
+					],
+				},
+			],
+			currentTarget: e.currentTarget,
+			offsetVertical: e.currentTarget.clientHeight + 10,
+		};
+		popover.open(config);
 	},
 },
 {
@@ -344,3 +451,61 @@ Template.sidebarHeader.events({
 		}
 	},
 });
+
+/*
+ * Function to draw the area chart
+ */
+function built3d() {
+
+    $('#container-3d').highcharts({
+        
+      chart: {
+            type: 'pie',
+            options3d: {
+                enabled: true,
+                alpha: 45,
+                beta: 0
+            }
+        },
+        title: {
+            text: "Statistics of the user's emotional states selection"
+        },
+        tooltip: {
+            valueSuffix: ' clicks'
+        },
+        plotOptions: {
+            pie: {
+                allowPointSelect: true,
+				cursor: 'pointer',
+                depth: 35,
+                dataLabels: {
+					enabled: true,
+					icon: 'emoji-happy',
+                    format: '{point.name}'
+				},
+            }
+        },
+        series: [{
+            type: 'pie',
+            name: 'Emoji',
+            data: [
+                ['Sad', counter.sad],
+                ['Uncertain', counter.uncertain],
+                {
+                    name: 'Happy',
+                    y: counter.happy,
+                    sliced: true,
+                    selected: true
+                },
+                ['Confused', counter.confused],
+            ]
+        }]
+    });
+}
+
+/*
+ * Call the function to built the chart when the template is rendered
+ */
+Template.ThreedDemo.rendered = function() {    
+    built3d();
+}

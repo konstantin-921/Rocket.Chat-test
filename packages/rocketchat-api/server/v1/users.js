@@ -417,6 +417,7 @@ RocketChat.API.v1.addRoute('users.setPreferences', { authRequired: true }, {
 				sidebarShowUnread: Match.Optional(Boolean),
 				sidebarSortby: Match.Optional(String),
 				sidebarViewMode: Match.Optional(String),
+				sidebarEmojiMod: Match.Optional(String),
 				sidebarHideAvatar: Match.Optional(Boolean),
 				sidebarGroupByType: Match.Optional(Boolean),
 				muteFocusedConversations: Match.Optional(Boolean),

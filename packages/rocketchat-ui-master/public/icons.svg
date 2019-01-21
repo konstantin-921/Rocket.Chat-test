@@ -152,6 +152,43 @@
             <path d="M7.172 12.328a4 4 0 0 0 5.656 0" stroke="currentColor" stroke-width="1.5"/>
         </g>
     </symbol>
+    <symbol id="icon-emoji-happy" viewBox="0 0 20 20">
+        <g fill="none" fill-rule="evenodd">
+            <path d="M0 0h20v20H0z"/>
+            <circle fill="currentColor" cx="12" cy="8" r="1"/>
+            <circle fill="currentColor" cx="8" cy="8" r="1"/>
+            <circle stroke="currentColor" stroke-width="1.5" cx="10" cy="10" r="9"/>
+            <path d="M7.172 12.328a4 4 0 0 0 5.656 0" stroke="currentColor" stroke-width="1.5"/>
+        </g>
+    </symbol>
+    <symbol id="icon-emoji-sad" viewBox="0 0 20 20">
+        <g fill="none" fill-rule="evenodd">
+            <path d="M0 0h20v20H0z"/>
+            <circle fill="currentColor" cx="12" cy="8" r="1"/>
+            <circle fill="currentColor" cx="8" cy="8" r="1"/>
+            <circle stroke="currentColor" stroke-width="1.5" cx="10" cy="10" r="9"/>
+            <path d="M7.172 12.328a4 4 0 0 1 5.656 0" stroke="currentColor" stroke-width="1.5"/>
+        </g>
+    </symbol>
+    <symbol id="icon-emoji-uncertain" viewBox="0 0 20 20">
+        <g fill="none" fill-rule="evenodd">
+            <path d="M0 0h20v20H0z"/>
+            <circle fill="currentColor" cx="12" cy="8" r="1"/>
+            <circle fill="currentColor" cx="8" cy="8" r="1"/>
+            <circle stroke="currentColor" stroke-width="1.5" cx="3" cy="3" r="3"/>
+            <circle stroke="currentColor" stroke-width="1.5" cx="10" cy="10" r="9"/>
+            <path d="M7.172 12.328l5 0" stroke="currentColor" stroke-width="1.5"/>
+        </g>
+    </symbol>
+    <symbol id="icon-emoji-confused" viewBox="0 0 20 20">
+        <g fill="none" fill-rule="evenodd">
+            <path d="M0 0h20v20H0z"/>
+            <circle fill="currentColor" cx="12" cy="8" r="1"/>
+            <circle fill="currentColor" cx="8" cy="8" r="1"/>
+            <circle stroke="currentColor" stroke-width="1.5" cx="10" cy="10" r="9"/>
+            <path d="M7.172 12.328l5 2" stroke="currentColor" stroke-width="1.5"/>
+        </g>
+    </symbol>
     <symbol id="icon-eye-off" viewBox="0 0 20 20">
         <g fill-rule="nonzero" fill="currentColor">
             <path d="M10 3.99c-3.79.004-6.658 2.896-8.542 5.44a.62.62 0 0 0 0 .739c.679.919 1.482 1.873 2.41 2.725a.62.62 0 1 0 .84-.915c-.729-.668-1.371-1.421-1.95-2.172C4.533 7.51 7.014 5.235 10 5.232c.515 0 1.011.066 1.493.187a.62.62 0 1 0 .303-1.203A7.392 7.392 0 0 0 10 3.99zM14.14 5.32a.62.62 0 0 0-.327 1.145c1.33.867 2.47 2.11 3.422 3.342-1.776 2.294-4.254 4.562-7.234 4.566-1.22-.003-2.346-.37-3.389-.972a.62.62 0 1 0-.62 1.076c1.19.686 2.537 1.135 4.008 1.137 3.79-.004 6.659-2.895 8.543-5.44a.62.62 0 0 0 0-.738c-1.052-1.424-2.399-2.934-4.051-4.011a.62.62 0 0 0-.352-.106z"/>
