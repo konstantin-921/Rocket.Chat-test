@@ -33,7 +33,7 @@ const counter = {
 	sad: 0,
 	uncertain: 0,
 	confused: 0,
-}
+};
 
 const setCounter = (value) => {
 	counter[value] = counter[value] + 1;
@@ -457,55 +457,54 @@ Template.sidebarHeader.events({
  */
 function built3d() {
 
-    $('#container-3d').highcharts({
-        
-      chart: {
-            type: 'pie',
-            options3d: {
-                enabled: true,
-                alpha: 45,
-                beta: 0
-            }
-        },
-        title: {
-            text: "Statistics of the user's emotional states selection"
-        },
-        tooltip: {
-            valueSuffix: ' clicks'
-        },
-        plotOptions: {
-            pie: {
-                allowPointSelect: true,
+	$('#container-3d').highcharts({
+		chart: {
+			type: 'pie',
+			options3d: {
+				enabled: true,
+				alpha: 45,
+				beta: 0,
+			},
+		},
+		title: {
+			text: "Statistics of the user's emotional states selection"
+		},
+		tooltip: {
+			valueSuffix: ' clicks',
+		},
+		plotOptions: {
+			pie: {
+				allowPointSelect: true,
 				cursor: 'pointer',
-                depth: 35,
-                dataLabels: {
+				depth: 35,
+				dataLabels: {
 					enabled: true,
 					icon: 'emoji-happy',
-                    format: '{point.name}'
+					format: '{point.name}',
 				},
-            }
-        },
-        series: [{
-            type: 'pie',
-            name: 'Emoji',
-            data: [
-                ['Sad', counter.sad],
-                ['Uncertain', counter.uncertain],
-                {
-                    name: 'Happy',
-                    y: counter.happy,
-                    sliced: true,
-                    selected: true
-                },
-                ['Confused', counter.confused],
-            ]
-        }]
-    });
+			},
+		},
+		series: [{
+			type: 'pie',
+			name: 'Emoji',
+			data: [
+				['Sad', counter.sad],
+				['Uncertain', counter.uncertain],
+				{
+					name: 'Happy',
+					y: counter.happy,
+					sliced: true,
+					selected: true,
+				},
+				['Confused', counter.confused],
+			],
+		}],
+	});
 }
 
 /*
  * Call the function to built the chart when the template is rendered
  */
 Template.ThreedDemo.rendered = function() {    
-    built3d();
-}
+	built3d();
+};

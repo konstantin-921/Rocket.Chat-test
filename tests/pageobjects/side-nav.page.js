@@ -27,6 +27,9 @@ class SideNav extends Page {
 
 	// Toolbar
 	get spotlightSearchIcon() { return browser.element('.sidebar__toolbar-button-icon--magnifier'); }
+	get spotlightEmotionIcon() { return browser.element('.sidebar__toolbar-button-icon--emoji-happy') || browser.element('.sidebar__toolbar-button-icon--emoji-sad') || browser.element('.sidebar__toolbar-button-icon--emoji-uncertain') || browser.element('.sidebar__toolbar-button-icon--emoji-confused'); }
+	get dropDownMenu() { return browser.element('.rc-popover__content'); }
+	get dropDownMenuEmotion() { return browser.element('.rc-popover__content .rc-popover__column ul:first-child li:last-child'); }
 	get spotlightSearch() { return browser.element('.toolbar__search input'); }
 	get spotlightSearchPopUp() { return browser.element('.rooms-list__toolbar-search'); }
 	get newChannelBtn() { return browser.element('.sidebar__toolbar-button-icon--edit-rounded'); }
